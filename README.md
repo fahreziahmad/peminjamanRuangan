@@ -1,19 +1,25 @@
-# SIPERU UMY - Sistem Peminjaman Ruangan Kampus UMY
+# SIPERU UMY - Sistem Informasi Peminjaman Ruangan Terintegrasi Universitas Muhammadiyah Yogyakarta
 
-**SIPERU UMY** adalah Single Page Application (SPA) berbasis web untuk mengelola dan memfasilitasi peminjaman ruangan di lingkungan Universitas Muhammadiyah Yogyakarta. Aplikasi ini dirancang menggunakan standar desain modern dengan nuansa khas hijau-emas UMY, glassmorphism, dan transisi halus.
-
-Aplikasi ini menggunakan **HTML5**, **Vanilla CSS3**, **Vanilla JavaScript (ES6+)**, dan **LocalStorage** untuk penyimpanan state/database lokal tanpa memerlukan setup database eksternal yang rumit.
+**SIPERU UMY** adalah platform web Single Page Application (SPA) modern yang dirancang untuk mendigitalkan, mempercepat, dan memberikan transparansi penuh pada proses birokrasi pengajuan izin peminjaman ruangan di lingkungan kampus terpadu **Universitas Muhammadiyah Yogyakarta (UMY)**.
 
 ---
 
-## 🚀 Fitur Utama
-1. **SPA Routing**: Navigasi halaman instan tanpa perlu reload halaman.
-2. **Katalog & Discovery Ruangan**: Pencarian ruangan berdasarkan nama, tipe, gedung, dan filter fasilitas.
-3. **Validasi Bentrok & Kapasitas**: Mencegah *double-booking* pada hari/sesi yang sama dan memvalidasi batas kapasitas peserta.
-4. **Dashboard Admin**: Visualisasi analitik menggunakan **Chart.js** untuk kepadatan booking per gedung dan status persetujuan.
-5. **Manajemen Ruangan (CRUD)**: Admin Sarpras dapat menambah, memperbarui status (Tersedia/Maintenance), mengedit, dan menghapus ruangan.
-6. **Slip Izin Resmi**: Pemohon yang disetujui dapat mengunduh dan mencetak slip izin resmi (dilengkapi dengan QR Code verifikasi) dengan desain *print-ready* CSS.
-7. **Analisis UML**: Dilengkapi file diagram UML lengkap (`uml_diagrams.md`).
+## 🎨 Keunggulan Desain & Visual (Premium UX)
+- **Identitas Brand UMY**: Desain antarmuka dirancang dengan dominasi warna khas UMY, yaitu **Hijau UMY (#0F6B40)** dan **Emas UMY (#E2A926)** untuk menjaga keselarasan identitas almamater.
+- **Glassmorphic Aesthetic**: Penerapan efek kartu kaca (*glassmorphic card*) transparan modern dengan blur latar belakang (*backdrop-filter*) dan bayangan lembut (*soft shadows*).
+- **Responsive Layout**: Antarmuka adaptif yang sangat rapi saat diakses melalui ponsel cerdas (mobile-first layout), tablet, maupun PC desktop.
+- **Micro-Animations & Transitions**: Transisi navigasi antar halaman, melayangnya tombol/elemen (*floating elements*), serta interaksi hover didesain halus guna meningkatkan kenyamanan pengalaman pengguna.
+
+---
+
+## ⚙️ Fitur Utama & Mekanisme Kerja
+1. **Single Page Application (SPA) Router**: Seluruh perpindahan halaman berjalan secara dinamis tanpa memicu pemuatan ulang halaman (*no-reload*), memberikan performa responsif layaknya aplikasi mobile native.
+2. **Local Storage Database Persistence**: Menggunakan `localStorage` sebagai media penyimpanan state database lokal klien secara persisten. Data akun pengguna, ketersediaan ruangan, riwayat peminjaman, serta status persetujuan tetap aman tersimpan meskipun browser ditutup.
+3. **Mekanisme Anti Double-Booking (Conflict Validation)**: Algoritma validasi yang mencegah peminjaman ganda pada ruangan, tanggal, dan sesi waktu yang sama. Jika ada bentrok jadwal, sistem otomatis memunculkan toast notifikasi penolakan instan.
+4. **Validasi Kapasitas Ruang**: Sistem otomatis memeriksa kesesuaian estimasi jumlah peserta dengan kapasitas maksimal daya tampung ruangan untuk menghindari pemesanan yang melebihi kapasitas fisik ruangan.
+5. **Interactive Admin Analytics (Chart.js)**: Menyajikan data statistik peminjaman dalam bentuk grafik interaktif secara realtime (grafik kepadatan pemesanan per gedung dan grafik donat proporsi status).
+6. **Manajemen Ruangan (CRUD)**: Staf Sarpras (Admin) dapat mengelola ketersediaan ruangan (Tambah, Ubah Status/Maintenance, Edit, Hapus).
+7. **Slip Izin Print-Ready**: Slip digital perizinan yang diformat dengan CSS `@media print` agar layout menjadi super bersih, menghilangkan navbar/sidebar browser, serta menyertakan **QR Code verifikasi** dan tanda tangan digital kepala Biro Aset.
 
 ---
 
@@ -23,7 +29,6 @@ Aplikasi ini adalah static site, namun untuk memastikan fitur **LocalStorage**, 
 
 ### Opsi 1: Menggunakan Python (Direkomendasikan & Paling Mudah)
 Jika Anda memiliki Python terinstal di komputer Anda, jalankan perintah ini di dalam direktori project:
-
 ```bash
 python -m http.server 8000
 ```
@@ -32,7 +37,6 @@ Setelah itu, buka browser Anda dan akses:
 
 ### Opsi 2: Menggunakan Node.js (`http-server`)
 Jika Anda menggunakan Node.js, Anda bisa menjalankan server statik dengan perintah:
-
 ```bash
 npx http-server -p 8000
 ```
